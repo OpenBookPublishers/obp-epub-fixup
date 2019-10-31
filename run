@@ -14,6 +14,13 @@ cleanup () {
 
 trap cleanup EXIT
 
+pack_epub () {
+    cd ${target_dir}
+    zip -X0 ${book_name}_new.epub mimetype
+    zip -Xr ${book_name}_new.epub META-INF/ \
+                                  OEBPS/
+}
+
 cd $(dirname $0)
 
 echo "Unzip epub document"
@@ -28,3 +35,9 @@ echo "Fix toc.ncx"
 python3 src/fix_toc_ncx.py ${target_dir}/OEBPS/toc.xhtml \
                            ${source_dir}/OEBPS/toc.ncx \
                            ${target_dir}/OEBPS/toc.ncx
+
+echo "Create new epub file" 
+(pack_epub)
+
+echo "Copy epub file back"
+cp ${target_dir}/${book_name}_new.epub .
