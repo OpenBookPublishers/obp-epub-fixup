@@ -36,6 +36,11 @@ python3 src/fix_toc_ncx.py ${target_dir}/OEBPS/toc.xhtml \
                            ${source_dir}/OEBPS/toc.ncx \
                            ${target_dir}/OEBPS/toc.ncx
 
+echo "Fix title tags in book sections"
+python3 src/fix_title_tag.py ${target_dir}/OEBPS/toc.xhtml \
+                             ${source_dir}/OEBPS/ \
+                             ${target_dir}/OEBPS/
+
 echo "Create new epub file" 
 (pack_epub)
 
