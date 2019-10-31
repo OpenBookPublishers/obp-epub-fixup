@@ -23,3 +23,8 @@ unzip -q ${book_name}.epub -d ${target_dir}
 echo "Fix toc.xhtml"
 python3 src/fix_toc_xhtml.py ${source_dir}/OEBPS/toc.xhtml \
                              ${target_dir}/OEBPS/toc.xhtml
+
+echo "Fix toc.ncx"
+python3 src/fix_toc_ncx.py ${target_dir}/OEBPS/toc.xhtml \
+                           ${source_dir}/OEBPS/toc.ncx \
+                           ${target_dir}/OEBPS/toc.ncx
