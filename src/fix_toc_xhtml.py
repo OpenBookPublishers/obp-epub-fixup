@@ -43,6 +43,7 @@ def run():
         'half-title.xhtml': 'Half Title',
         'title.xhtml': 'Title',
         'copyright.xhtml': 'Copyright',
+        'dedication.xhtml': 'Dedication',
         'contents.xhtml': 'Contents',
 
         # Back matters
