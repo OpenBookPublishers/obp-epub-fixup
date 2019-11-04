@@ -3,6 +3,16 @@ Collection of scripts to fix epub files programmatically
 
 Work in progress
 
+## Setup
+
+This software requires `epubcheck` and `pyvenv-3.5` to be installed on your system. On Debian (or Debian-based distributions) this package can be installed via
+
+`apt-get install epubcheck pyvenv-3.5`
+
+To perform the setup, run:
+
+`bash setup`
+
 ## Run
 
 To run the process, place a copy of the **epub edition of the book** in the `obp-epub-fixup` folder. Finally, run:
