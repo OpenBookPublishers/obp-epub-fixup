@@ -3,6 +3,18 @@ Collection of scripts to fix epub files programmatically
 
 Work in progress
 
+## Run
+
+To run the process, place a copy of the **epub edition of the book** in the `obp-epub-fixup` folder. Finally, run:
+
+`bash run prefix`
+
+where prefix is the name of the book; i.e.: `bash run Screpanti-Labour-Value`.
+
+`-c` and `--check` flags are available to verify if the newly produced ePub validates.
+
+`bash run -c prefix`
+
 ## Contents
 These scripts refer specifically to our InDesing -> ePub workflow. Assumptions given here might be inaccurate in different settings.
 
