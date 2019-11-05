@@ -48,31 +48,31 @@ pack_epub () {
 
 cd $(dirname $0)
 
-echo "Unzip epub document"
+# echo "Unzip epub document"
 unzip -q ${book_name}.epub -d ${source_dir}
 unzip -q ${book_name}.epub -d ${target_dir}
 
-echo "Fix toc.xhtml"
+# echo "Fix toc.xhtml"
 python3 src/fix_toc_xhtml.py ${source_dir}/OEBPS/toc.xhtml \
                              ${target_dir}/OEBPS/toc.xhtml
 
-echo "Fix toc.ncx"
+# echo "Fix toc.ncx"
 python3 src/fix_toc_ncx.py ${target_dir}/OEBPS/toc.xhtml \
                            ${source_dir}/OEBPS/toc.ncx \
                            ${target_dir}/OEBPS/toc.ncx
 
-echo "Fix title tags in book sections"
+# echo "Fix title tags in book sections"
 python3 src/fix_title_tag.py ${target_dir}/OEBPS/toc.xhtml \
                              ${source_dir}/OEBPS/ \
                              ${target_dir}/OEBPS/
 
-echo "Create new epub file" 
+# echo "Create new epub file" 
 (pack_epub)
 
-echo "Copy epub file back"
+# echo "Copy epub file back"
 cp ${target_dir}/${book_name}_new.epub .
 
 if [ $FORCE_CHECK -eq 1 ]; then
-    echo "Check epub for errors"
+    # echo "Check epub for errors"
     check_epub
 fi
