@@ -22,9 +22,9 @@ def get_h1_text(file_path):
             return False
 
 def write_output(soup, output_file):
-        with open(output_file, 'wb') as output:
-            raw_soup = soup.encode('utf-8')
-            output.write(raw_soup)
+    with open(output_file, 'wb') as output:
+        raw_soup = soup.encode('utf-8')
+        output.write(raw_soup)
 
 def run():
     # Parse input arguments
