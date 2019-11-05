@@ -5,11 +5,11 @@ Work in progress
 
 ## Setup
 
-This software requires `epubcheck` and `pyvenv-3.5` to be installed on your system. On Debian (or Debian-based distributions) this package can be installed via
+This software requires `epubcheck`, `python3-bs4` and `python-lxml` to be installed on your system. On Debian (or Debian-based distributions) this package can be installed via
 
-`apt-get install epubcheck pyvenv-3.5`
+`apt-get install epubcheck python3-bs4 python-lxml`
 
-To perform the setup, run:
+You can check the requirements being met by running:
 
 `bash setup`
 
