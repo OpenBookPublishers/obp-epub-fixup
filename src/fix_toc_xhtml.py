@@ -7,7 +7,7 @@ def get_h1_text(file_path):
     with open(file_path, 'r') as section:
         file_soup = BeautifulSoup(section, 'html.parser')
 
-        class_list = ["heading1"]
+        class_list = ["heading1", "heading1-aut"]
         h1 = file_soup.find_all('h1', class_=class_list)
 
         if len(h1) == 1:
