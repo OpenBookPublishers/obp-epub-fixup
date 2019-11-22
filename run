@@ -66,6 +66,10 @@ python3 src/fix_title_tag.py ${target_dir}/OEBPS/toc.xhtml \
                              ${source_dir}/OEBPS/ \
                              ${target_dir}/OEBPS/
 
+# echo "Fix contents.xhtml"
+python3 src/fix_contents_xhtml.py ${source_dir}/OEBPS/contents.xhtml \
+                                  ${target_dir}/OEBPS/contents.xhtml
+
 # echo "Create new epub file" 
 (pack_epub)
 
