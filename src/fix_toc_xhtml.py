@@ -32,9 +32,9 @@ def sanitize_href(href):
     Strips fragment from href.
     i.e. 'index.xhtml#my_anchor' -> 'index.xhtml'
     
-    urlsplit(file_path)[2] returns the path attribute of a URL.
+    urlsplit(file_path).path returns the path attribute of a URL.
     """
-    clean_href = urlsplit(href)[2]
+    clean_href = urlsplit(href).path
 
     return clean_href
 
