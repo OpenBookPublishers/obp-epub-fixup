@@ -15,4 +15,4 @@ check () {
 
 check "epubcheck"
 check "python3-bs4"
-chech "python-lxml"
+check "python-lxml"
