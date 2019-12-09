@@ -3,7 +3,19 @@ Collection of scripts to fix epub files programmatically
 
 Work in progress
 
-## Setup
+## Run with docker
+```
+docker run \
+  -v /path/to/local.epub:/ebook_automation/epub_file.epub \
+  -v /path/to/output:/ebook_automation/output \
+  -e OUTDIR=/ebook_automation/output \
+  openbookpublishers/obp-epub-fixup
+```
+
+Alternatively you may clone the repo, build the image using `docker build . -t some/tag` and run the command above replacing `openbookpublishers/obp-epub-fixup` with `some/tag`.
+
+## Run locally
+### Setup
 
 This software requires `epubcheck`, `python3-bs4` and `python-lxml` to be installed on your system. On Debian (or Debian-based distributions) this package can be installed via
 
@@ -13,7 +25,7 @@ You can check the requirements being met by running:
 
 `bash setup`
 
-## Run
+### Run
 
 To run the process, place a copy of the **epub edition of the book** in the `obp-epub-fixup` folder. Finally, run:
 
