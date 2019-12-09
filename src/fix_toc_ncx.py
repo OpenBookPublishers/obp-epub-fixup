@@ -1,31 +1,34 @@
 #!/usr/bin/env python3
-from bs4 import BeautifulSoup
 import argparse
+from bs4 import BeautifulSoup
+
 
 def read_toc_xhtml(toc_xhtml):
     with open(toc_xhtml, 'r') as toc_xhtml_f:
         soup = BeautifulSoup(toc_xhtml_f, 'html.parser')
 
         # Create a dictionary with toc entries (with link and text)
-        entries = [{'src': entry.get('href'), 'text': entry.string} \
-                  for entry in soup.find_all('a')]
+        entries = [{'src': entry.get('href'), 'text': entry.string}
+                   for entry in soup.find_all('a')]
 
         return entries
 
+
 def write_output(soup, out_toc_ncx):
-        with open(out_toc_ncx, 'wb') as out_toc_ncx_f:
-            raw_soup = soup.encode('utf-8')
-            out_toc_ncx_f.write(raw_soup)
+    with open(out_toc_ncx, 'wb') as out_toc_ncx_f:
+        raw_soup = soup.encode('utf-8')
+        out_toc_ncx_f.write(raw_soup)
+
 
 def run():
     # Parse input arguments
     parser = argparse.ArgumentParser(description='fix_toc_ncx')
     parser.add_argument('toc_xhtml',
-                        help = 'input toc.xhtml file to process')
+                        help='input toc.xhtml file to process')
     parser.add_argument('in_toc_ncx',
-                        help = 'input toc.ncx file to process')
+                        help='input toc.ncx file to process')
     parser.add_argument('out_toc_ncx',
-                        help = 'output toc.ncx file to write to')
+                        help='output toc.ncx file to write to')
 
     args = parser.parse_args()
 
@@ -39,7 +42,7 @@ def run():
 
             # Retrieve correct text entries from toc_xhtml
             # by matching src values
-            text = next((entry['text'] for entry in entries \
+            text = next((entry['text'] for entry in entries
                          if entry['src'] == src), None)
 
             # Replace the text string
@@ -47,6 +50,7 @@ def run():
                 navpoint.find('text').string.replace_with(text)
 
         write_output(soup, args.out_toc_ncx)
+
 
 if __name__ == '__main__':
     run()

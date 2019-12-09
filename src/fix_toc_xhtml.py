@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-from bs4 import BeautifulSoup
 import argparse
 import os
 from urllib.parse import urlsplit
+from bs4 import BeautifulSoup
+
 
 def get_h1_text(file_path):
     with open(file_path, 'r') as section:
@@ -15,36 +16,39 @@ def get_h1_text(file_path):
             return file_soup.h1.get_text()
 
         elif len(h1) > 1:
-            print("[WARNING] {} has multiple h1 tags" \
+            print("[WARNING] {} has multiple h1 tags"
                   .format(os.path.basename(file_path)))
             return h1.pop(0).get_text()
 
         else:
             return False
 
+
 def write_output(soup, output_file):
     with open(output_file, 'wb') as output:
         raw_soup = soup.encode('utf-8')
         output.write(raw_soup)
 
+
 def sanitize_href(href):
     """
     Strips fragment from href.
     i.e. 'index.xhtml#my_anchor' -> 'index.xhtml'
-    
+
     urlsplit(file_path).path returns the path attribute of a URL.
     """
     clean_href = urlsplit(href).path
 
     return clean_href
 
+
 def run():
     # Parse input arguments
     parser = argparse.ArgumentParser(description='fix_toc_xhtml')
     parser.add_argument('input_file',
-                        help = 'Input file to process')
+                        help='Input file to process')
     parser.add_argument('output_file',
-                        help = 'Output file')
+                        help='Output file')
 
     args = parser.parse_args()
 
@@ -83,7 +87,7 @@ def run():
                 continue
 
             # Replace string in 'uncertain' filenames
-            file_path = os.path.join(os.path.dirname(args.input_file), \
+            file_path = os.path.join(os.path.dirname(args.input_file),
                                      clean_href)
             h1_text = get_h1_text(file_path)
 
@@ -92,10 +96,11 @@ def run():
                 continue
 
             # If no match found, string is unchanged
-            print("[INFO] No title found for {}; fallback" \
+            print("[INFO] No title found for {}; fallback"
                   .format(clean_href))
 
         write_output(soup, args.output_file)
+
 
 if __name__ == '__main__':
     run()
