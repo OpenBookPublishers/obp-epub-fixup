@@ -27,7 +27,7 @@ cleanup () {
 trap cleanup EXIT
 
 check_epub () {
-    epubcheck -q ${book_name}_new.epub &> ${book_name}_new.log
+    epubcheck -q $OUTDIR/${book_name}_new.epub &> $OUTDIR/${book_name}_new.log
     local err=$?
 
     if [ $err -ne 0 ]; then
@@ -74,7 +74,7 @@ python3 src/fix_contents_xhtml.py ${source_dir}/OEBPS/contents.xhtml \
 (pack_epub)
 
 # echo "Copy epub file back"
-cp ${target_dir}/${book_name}_new.epub .
+cp ${target_dir}/${book_name}_new.epub $OUTDIR
 
 if [ $FORCE_CHECK -eq 1 ]; then
     # echo "Check epub for errors"
