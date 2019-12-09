@@ -50,3 +50,10 @@ This script follows the same principle as `./src/fix_toc_xhtml.py`, but changes 
 
 ### ./src/fix_title_tag.py
 The content of the `<title>` tag is updated with the more accurate string stored in `toc.xhtml`. This process is repeated for all the book sections which appear in the `toc.xhtml` file.
+
+## Development
+Use `pre-commit.sh` as a pre commit git hook to build a test image that will run `flake8` to enforce PEP8 style.
+
+```
+ln -sf ../../pre-commit.sh .git/hooks/pre-commit
+```
