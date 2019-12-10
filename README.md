@@ -5,7 +5,7 @@ Work in progress
 
 ## Run with docker
 ```
-docker run \
+docker run --rm \
   -v /path/to/local.epub:/ebook_automation/epub_file.epub \
   -v /path/to/output:/ebook_automation/output \
   -e OUTDIR=/ebook_automation/output \
