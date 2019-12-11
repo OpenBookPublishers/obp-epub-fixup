@@ -14,4 +14,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY run ./
 COPY ./src/ ./src/
 
+ENV OUTDIR=/ebook_automation/output
+
 CMD bash run epub_file
